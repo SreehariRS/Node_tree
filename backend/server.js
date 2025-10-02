@@ -11,8 +11,11 @@ app.use(express.json());
 // Configure CORS for production and development
 const allowedOrigins = [
   'http://localhost:3000', // Development
-  process.env.FRONTEND_URL // Production (Vercel)
+  'https://node-tree-sooty.vercel.app', // Production (Vercel) - hardcoded for now
+  process.env.FRONTEND_URL // Production (Vercel) - from env var
 ].filter(Boolean);
+
+console.log('Allowed CORS origins:', allowedOrigins);
 
 app.use(cors({ 
   origin: allowedOrigins,
