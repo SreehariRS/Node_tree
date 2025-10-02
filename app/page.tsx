@@ -5,6 +5,7 @@ import Node from './components/Node';
 import { useTree } from './context/TreeContext';
 import { Node as NodeType } from './types/node';
 import Toast from './components/Toast';
+import Spinner from './components/Spinner';
 import { API_ENDPOINTS } from './config/api';
 
 export default function Home() {
@@ -149,7 +150,7 @@ export default function Home() {
 
         {loading ? (
           <div className="text-center py-8">
-            <p className="text-gray-600">Loading tree structure...</p>
+            <Spinner size="lg" text="Loading tree structure..." />
           </div>
         ) : (
           <div className="bg-white rounded-lg shadow-sm p-6">

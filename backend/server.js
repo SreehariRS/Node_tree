@@ -8,11 +8,10 @@ dotenv.config();
 
 const app = express();
 app.use(express.json());
-// Configure CORS for production and development
 const allowedOrigins = [
-  'http://localhost:3000', // Development
-  'https://node-tree-sooty.vercel.app', // Production (Vercel) - hardcoded for now
-  process.env.FRONTEND_URL // Production (Vercel) - from env var
+  'http://localhost:3000', 
+  'https://node-tree-sooty.vercel.app', 
+  process.env.FRONTEND_URL
 ].filter(Boolean);
 
 console.log('Allowed CORS origins:', allowedOrigins);
