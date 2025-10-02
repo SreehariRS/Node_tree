@@ -24,7 +24,7 @@ Make sure your backend code is in the `backend/` directory and pushed to GitHub.
    - **Branch**: `main` (or your default branch)
    - **Root Directory**: `backend`
    - **Runtime**: `Node`
-   - **Build Command**: `npm install`
+   - **Build Command**: `npm install` (or leave empty)
    - **Start Command**: `npm start`
 
 ### Step 3: Set Environment Variables on Render
