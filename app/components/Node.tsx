@@ -5,6 +5,7 @@ import { useTree } from '../context/TreeContext';
 import { Node as NodeType } from '../types/node';
 import ConfirmDialog from './ConfirmDialog';
 import Toast from './Toast';
+import { API_ENDPOINTS } from '../config/api';
 
 interface NodeProps {
   node: NodeType;
@@ -64,7 +65,7 @@ export default function Node({ node, depth = 0 }: NodeProps) {
     if (!validateName(newName)) return;
     
     try {
-      const res = await fetch('http://localhost:5000/api/nodes', {
+      const res = await fetch(API_ENDPOINTS.NODES, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ name: newName.trim(), parent: node._id }),
@@ -91,7 +92,7 @@ export default function Node({ node, depth = 0 }: NodeProps) {
 
   async function handleDelete() {
     try {
-      const res = await fetch(`http://localhost:5000/api/nodes/${node._id}`, {
+      const res = await fetch(`${API_ENDPOINTS.NODES}/${node._id}`, {
         method: 'DELETE',
       });
       if (!res.ok) throw new Error('Failed to delete');
@@ -109,7 +110,7 @@ export default function Node({ node, depth = 0 }: NodeProps) {
     }
     
     try {
-      const res = await fetch(`http://localhost:5000/api/nodes/${node._id}`, {
+      const res = await fetch(`${API_ENDPOINTS.NODES}/${node._id}`, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ name: editName.trim() }),

@@ -8,7 +8,16 @@ dotenv.config();
 
 const app = express();
 app.use(express.json());
-app.use(cors({ origin: 'http://localhost:3000' }));
+// Configure CORS for production and development
+const allowedOrigins = [
+  'http://localhost:3000', // Development
+  process.env.FRONTEND_URL // Production (Vercel)
+].filter(Boolean);
+
+app.use(cors({ 
+  origin: allowedOrigins,
+  credentials: true 
+}));
 
 mongoose.connect(process.env.MONGO_URI)
   .then(() => console.log('MongoDB connected'))

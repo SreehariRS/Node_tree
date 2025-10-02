@@ -2,6 +2,7 @@
 
 import { createContext, useContext, useState } from 'react';
 import { Node } from '../types/node';
+import { API_ENDPOINTS } from '../config/api';
 
 interface TreeContextType {
   roots: Node[];
@@ -18,7 +19,7 @@ export function TreeProvider({ children }: { children: React.ReactNode }) {
   async function fetchTree() {
     setLoading(true);
     try {
-      const res = await fetch('http://localhost:5000/api/tree');
+      const res = await fetch(API_ENDPOINTS.TREE);
       if (!res.ok) throw new Error('Failed to fetch tree');
       const data: Node[] = await res.json();
       setRoots(data);

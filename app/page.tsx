@@ -5,6 +5,7 @@ import Node from './components/Node';
 import { useTree } from './context/TreeContext';
 import { Node as NodeType } from './types/node';
 import Toast from './components/Toast';
+import { API_ENDPOINTS } from './config/api';
 
 export default function Home() {
   const { roots, fetchTree, loading } = useTree();
@@ -60,7 +61,7 @@ export default function Home() {
     if (!validateName(newRootName)) return;
     
     try {
-      const res = await fetch('http://localhost:5000/api/nodes', {
+      const res = await fetch(API_ENDPOINTS.NODES, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ name: newRootName.trim() }),
