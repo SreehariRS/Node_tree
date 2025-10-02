@@ -56,8 +56,18 @@ NEXT_PUBLIC_API_URL=https://your-app-name-backend.onrender.com
    - **Output Directory**: `.next`
 
 ### Step 3: Set Environment Variables on Vercel
-In your Vercel project settings, go to "Environment Variables" and add:
-- `NEXT_PUBLIC_API_URL`: `https://your-app-name-backend.onrender.com`
+**IMPORTANT**: You need to set this BEFORE deploying or during the deployment process.
+
+Option 1 - During Deployment:
+- When Vercel asks for environment variables during deployment, add:
+  - Key: `NEXT_PUBLIC_API_URL`
+  - Value: `https://your-app-name-backend.onrender.com`
+
+Option 2 - After Deployment:
+- Go to your Vercel project dashboard
+- Click "Settings" → "Environment Variables"
+- Add: `NEXT_PUBLIC_API_URL` = `https://your-app-name-backend.onrender.com`
+- Redeploy the project
 
 ### Step 4: Deploy
 Click "Deploy" and wait for the deployment to complete.
